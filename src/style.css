@@ -1,0 +1,207 @@
+:root {
+    --general-background-color: #333;
+    --calculator-dark-color: #fff;
+    --light-background-color: #fff;
+    --calculator-width: 300px;
+    --calculator-height: 400px;
+    --calculator-display-color: #a7af7c;
+    --calculator-equal-color: #2196f3;
+    --key-size: 80px;
+    --btn-size: 60px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: consoles, "Courier New", monospace;
+}
+
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--general-background-color);
+    transition: 0.5s;
+}
+
+body.light {
+    background-color: var(--light-background-color);
+    transition: 0.5s;
+}
+
+.container {
+    position: relative;
+    min-width: var(--calculator-width);
+    min-height: var(--calculator-height);
+    background: var(--general-background-color);
+    padding: 40px 30px 30px;
+    border-radius: 20px;
+    box-shadow: 25px 25px 75px rgba(0, 1, 1, 0.25),
+        10px 10px 70px rgba(0, 0, 0, 0.25),
+        inset -5px -5px 15px rgba(0, 0, 0, 1),
+        inset 5px 5px 15px rgba(0, 0, 0, 0.5);
+    transition: 0.5s;
+
+}
+
+
+
+body.light .container {
+    background: #fafafa;
+    box-shadow: 25px 25px 75px rgba(0, 1, 1, 0.15),
+        10px 10px 70px rgba(0, 0, 0, 0.15),
+        inset -5px -5px 15px rgba(0, 0, 0, 0.15),
+        inset 5px 5px 15px rgba(0, 0, 0, 0.05);
+    transition: 0.5s;
+}
+
+.calculator {
+    position: relative;
+    display: grid;
+}
+
+.calculator span {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: var(--key-size);
+    height: var(--key-size);
+    color: var(--calculator-dark-color);
+    margin: calc(var(--key-size)/10);
+    background: linear-gradient(#3f3f3f, #2f2f2f);
+    box-shadow: inset -8px 0 8px rgba(0, 0, 0, 0.15),
+        inset 0 -8px 8px rgba(0, 0, 0, 0.25),
+        0 0 2px rgba(0, 0, 0, 0.2),
+        10px 20px 25px rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    user-select: none;
+    cursor: pointer;
+    font-weight: 500;
+    color: var(--calculator-dark-color);
+
+}
+
+
+
+
+.calculator .value {
+    position: relative;
+    grid-column: span 4;
+    height: 100px;
+    left: 10px;
+    width: calc(100% -20px);
+    border: none;
+    outline: none;
+    background-color: var(--calculator-display-color);
+    margin-bottom: 10px;
+    border-radius: 10px;
+    box-shadow: inset 2px 2px 10px #bebebe,
+        inset -2px -2px 10px #fff;
+    text-align: right;
+    font-size: 2rem;
+    padding: 10px;
+}
+
+
+.calculator span::before {
+    content: '';
+    position: absolute;
+    top: calc(var(--calculator-width) /100);
+    left: calc(var(--calculator-height)/100);
+    bottom: 14px;
+    right: 12px;
+    background: linear-gradient(90deg, #2d2d2d, #4d4d4d);
+    border-radius: 10px;
+    box-shadow: -5px -5px 15px rgba(0, 0, 0, 0.1),
+        10px 5px 10px rgba(0, 0, 0, 0.15);
+    border-left: 1px solid #0004;
+    border-top: 1px solid #0004;
+    border-bottom: 1px solid #0004;
+
+
+}
+
+.calculator span:active {
+    filter: brightness(1.5);
+}
+
+.calculator span i {
+    position: relative;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+
+}
+
+.calculator .clear {
+    grid-column: span 2;
+    width: 185px;
+    background: #f00;
+}
+
+
+.calculator .clear::before {
+    background: linear-gradient(90deg, #d20000, #ffffff5c);
+    border-left: 1px solid #fff4;
+    border-top: 1px solid #fff4;
+    border-bottom: 1px solid #fff4;
+}
+
+.calculator .plus {
+    grid-row: 2 span;
+    height: 176px;
+}
+
+.calculator .equal {
+    background: var(--calculator-equal-color);
+}
+
+.calculator .equal::before {
+    background: linear-gradient(90deg, var(--calculator-equal-color), #ffffff5c);
+    border-left: 1px solid #fff4;
+    border-top: 1px solid #fff4;
+    border-bottom: 1px solid #fff4;
+}
+
+.btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: var(--btn-size);
+    height: var(--btn-size);
+    background: var(--general-background-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.25),
+        5px 5px 30px rgba(0, 0, 0, 0.25),
+        inset -2px -2px 5px rgba(0, 0, 0, 0.25),
+        inset 2px 2px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+
+
+.btn img {
+    filter: invert(1);
+    cursor: pointer;
+    width: 55px;
+    height: 55px;
+}
+
+.btn img:nth-child(1) {
+    display: block;
+}
+
+.btn img:nth-child(2) {
+    display: none;
+}
+
+body.light .btn img:nth-child(1) {
+    display: none;
+}
+
+body.light .btn img:nth-child(2) {
+    display: block;
+}
